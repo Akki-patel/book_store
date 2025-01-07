@@ -6,6 +6,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { IoIosCart } from "react-icons/io";
 import avatarImg from "../assets/avatar.png";
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const navigation = [
   { name: "DashBoard", href: "/dashboard" },
@@ -15,8 +16,10 @@ const navigation = [
 ]
 
 const Navbar = () => {
-  const Currentuser = true;
+  const Currentuser = false;
   const [isDropdownOpen, setisDropdownOpen] = useState(false);
+  const cartItems = useSelector(state=>state.cart.cartItems);
+  console.log(cartItems)
   return (
     <header className='max-w-screen-2xl mx-auto px-4 py-6'>
       <nav className='flex justify-between items-center'>
@@ -67,9 +70,12 @@ const Navbar = () => {
             <FaRegHeart className="size-6" />
           </button>
 
-          <Link className='bg-primary p-1 sm:px-6 px-2 flex items-center rounded-sm'>
+          <Link to="/cart" className='bg-primary p-1 sm:px-6 px-2 flex items-center rounded-sm'>
             <IoIosCart />
-            <span className='text-sm font-semibold sm:ml-1'>0</span>
+            {
+              cartItems.length > 0 ? <span className='text-sm font-semibold sm:ml-1'>{cartItems.length}</span> :  <span className='text-sm font-semibold sm:ml-1'>0</span>
+
+            }
 
           </Link>
 
