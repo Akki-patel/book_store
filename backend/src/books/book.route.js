@@ -1,6 +1,6 @@
 const express = require('express');
 const Book = require('./book.model');
-const { postABook } = require('./book.controller');
+const { postABook, getAllBooks, getSingleBook, updateBookData, deleteBook } = require('./book.controller');
 const router  =  express.Router();
 //post book'
 
@@ -10,7 +10,21 @@ const router  =  express.Router();
 // put/patch used when you want to edit or updATE something
 // delete used when you want to delete something
 
+
+// create book
 router.post ("/create-book",postABook)
+
+// get all book
+router.get("/",getAllBooks)
+
+//get single book
+router.get("/:id",getSingleBook)
+
+// Update a book endpoint
+router.put("/edit/:id",updateBookData)
+
+// delete a book 
+router.delete("/:id",deleteBook)
 
 
 
