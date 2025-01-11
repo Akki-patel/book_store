@@ -7,28 +7,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import BookCrad from '../books/BookCrad';
+import { useFetchAllBooksQuery } from '../../redux/Features/books/booksApi';
 
 const Recommended = () => {
-    const [books, setBooks] = useState([]);
 
-    // Fetch books data from "books.json" on component mount
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('books.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                setBooks(data);
-            } catch (error) {
-                console.error('Error fetching books:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
+       const {data: books = []} = useFetchAllBooksQuery();
+    
     return (
         <div className='py-16'>
             <h2 className="text-3xl font-semibold mb-6">Recommended for you</h2>
