@@ -7,19 +7,29 @@ import { IoIosCart } from "react-icons/io";
 import avatarImg from "../assets/avatar.png";
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { useAuth } from '../context/AuthContext';
 
 const navigation = [
   { name: "DashBoard", href: "/dashboard" },
   { name: "Orders", href: "/orders" },
-  { name: "Cart page", href: "/cart" },
+  { name: "CartPage", href: "/cart" },
   { name: "Checkout", href: "/checkout" }
 ]
 
 const Navbar = () => {
-  const Currentuser = false;
   const [isDropdownOpen, setisDropdownOpen] = useState(false);
   const cartItems = useSelector(state=>state.cart.cartItems);
+
+  const {currentUser,logoutUser} = useAuth();
+
+
   console.log(cartItems)
+
+  const handleLogout = ()=>{
+    logoutUser()
+  }
+
+
   return (
     <header className='max-w-screen-2xl mx-auto px-4 py-6'>
       <nav className='flex justify-between items-center'>
@@ -40,10 +50,10 @@ const Navbar = () => {
         <div className='relative flex items-center md:space-x-3 space-x-2'>
           <div >
             {
-              Currentuser ? <>
+              currentUser ? <>
                 <button onClick={() => setisDropdownOpen(!isDropdownOpen)}>
                   <img src={avatarImg} alt="" className={`size-7 rounded-full $ 
-                    { Currentuser ? 'ring-2 ring-blue-500': ''}` } />
+                    { currentUser ? 'ring-2 ring-blue-500': ''}` } />
                 </button>
                 {
                   isDropdownOpen && (
@@ -56,6 +66,9 @@ const Navbar = () => {
                             </li>
                           ))
                         }
+                        <li>
+                          <button className='block w-full px-4 py-2 text-left text-sm hover:bg-green-100' onClick={handleLogout}>Logout</button>
+                        </li>
                       </ul>
                     </div>
                   )
