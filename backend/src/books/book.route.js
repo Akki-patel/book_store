@@ -1,6 +1,7 @@
 const express = require('express');
 const Book = require('./book.model');
 const { postABook, getAllBooks, getSingleBook, updateBookData, deleteBook } = require('./book.controller');
+const verifyAdminToken = require('../middleware/verifyAdminToken')
 const router  =  express.Router();
 //post book'
 
@@ -12,7 +13,7 @@ const router  =  express.Router();
 
 
 // create book
-router.post ("/create-book",postABook)
+router.post ("/create-book",verifyAdminToken,postABook)
 
 // get all book
 router.get("/",getAllBooks)
