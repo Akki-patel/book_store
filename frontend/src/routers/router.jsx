@@ -6,6 +6,7 @@ import Register from "../components/Register";
 import CartPage from "../pages/books/CartPage";
 import CheckOut from "../pages/books/CheckOut";
 import SingleBook from "../pages/books/SingleBook";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -16,38 +17,38 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-            path: "/",
-            element: <Home/>
-        },
-        {
-            path:"/orders",
-            element:<div>Orders</div>,
-        },
-        {
-            path:"/about",
-            element:<div>About</div>
-        },
-        {
-            path:"/login",
-            element:<Login />
-        },
-        {
-            path:"/register",
-            element:<Register />
-        },
-        {
-            path:"/cart",
-            element:<CartPage />
-        },
-        {
-            path:"/checkout",
-            element:<CheckOut />
-        },
-        {
-            path:"/books/:id",
-            element:<SingleBook />
-        },
-    ]
+                path: "/",
+                element: <Home />
+            },
+            {
+                path: "/orders",
+                element: <div>Orders</div>,
+            },
+            {
+                path: "/about",
+                element: <div>About</div>
+            },
+            {
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "/register",
+                element: <Register />
+            },
+            {
+                path: "/cart",
+                element: <CartPage />
+            },
+            {
+                path: "/checkout",
+                element: <PrivateRoute ><CheckOut /></PrivateRoute>
+            },
+            {
+                path: "/books/:id",
+                element: <SingleBook />
+            },
+        ]
     },
 ]);
 export default router;

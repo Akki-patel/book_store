@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 const CheckOut = () => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2);
-    const currentUser = true; // TDO : get user from auth
+    const { currentUser } = useAuth();
     const [isChecked, setIsChecked] = useState(false);
     const {
         register,
@@ -13,6 +14,8 @@ const CheckOut = () => {
         watch,
         formState: { errors },
     } = useForm()
+
+
     const onSubmit = (data) => {
         const newOrder = {
             name: data.name,
