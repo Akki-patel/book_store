@@ -65,7 +65,7 @@ const Login = () => {
                         message && <p className='text-red-500 text-xs italic mb-3'>{message}</p>
                     }
                     <div className=''>
-                        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded focus:outline-none'>Login</button>
+                        <button className='w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded focus:outline-none'>Login</button>
                     </div>
                 </form>
                 <p className='aligin-baseline font-medium mt-4 text-sm'>Haven't an account? Please <Link className='text-blue-500 hover:text-blue-700' to="/register">Register    </Link></p>
