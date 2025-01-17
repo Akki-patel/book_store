@@ -13,7 +13,7 @@ const router  =  express.Router();
 
 
 // create book
-router.post ("/create-book",verifyAdminToken,postABook)
+router.post("/create-book",verifyAdminToken,postABook)
 
 // get all book
 router.get("/",getAllBooks)
