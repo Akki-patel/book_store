@@ -7,7 +7,7 @@ import CartPage from "../pages/books/CartPage";
 import CheckOut from "../pages/books/CheckOut";
 import SingleBook from "../pages/books/SingleBook";
 import PrivateRoute from "./PrivateRoute";
-import OrderPage from "../pages/books/orderPage";
+import OrderPage from "../pages/books/OrderPage";
 import Admin_routes from "./Admin_routes";
 import AdminLogin from "../components/AdminLogin";
 import DashboardLayout from "../pages/DashBoard/Dashboardlayout";
